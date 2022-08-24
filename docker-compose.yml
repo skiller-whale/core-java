@@ -10,7 +10,7 @@ services:
       WATCHER_BASE_PATH: /app
       ATTENDANCE_ID_FILE: /app/sync/attendance_id
       WATCHED_EXTS: |
-        ["go", "mod", "command_history"]
+        ["java", "command_history"]
       IGNORE_DIRS: |
         [".git", "bin"]
     volumes:
