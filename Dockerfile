@@ -17,18 +17,16 @@ RUN bash -c "source $HOME/.sdkman/bin/sdkman-init.sh && \
     rm -rf $HOME/.sdkman/tmp/*"
 
 # Copy files for the sync script
-#COPY SkillerWhaleSync.java /app/sync/
-#WORKDIR /app/sync
+COPY _sync/SkillerWhaleSync.java /app/sync/
+WORKDIR /app/sync
 
 # Copy files for the sync script
 COPY _sync /app/sync
 WORKDIR /app/sync
-RUN go mod download
-RUN go build sync.go
 
 # Set the working directory to be the exercises dir (when sh is run)
 WORKDIR /app/exercises
 RUN ln -s /root/.ash_history /app/.command_history
 
 # Clear the history on startup, and run the sync
-CMD > /root/.ash_history && /app/sync/sync
+CMD > /root/.ash_history && /root/.sdkman/candidates/java/current/bin/java /app/sync/SkillerWhaleSync.java
