@@ -1,12 +1,8 @@
 FROM debian
 
 RUN apt update
-RUN apt -qq -y install curl wget unzip zip
+RUN apt -qq -y install curl wget unzip zip jq
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
-
-# temporarily install go for sync script
-RUN curl -L https://go.dev/dl/go1.19.linux-amd64.tar.gz | tar xz -C /usr/local
-RUN ln -s /usr/local/go/bin/go /usr/local/bin/
 
 RUN curl https://get.sdkman.io/ | bash
 
@@ -16,17 +12,13 @@ RUN bash -c "source $HOME/.sdkman/bin/sdkman-init.sh && \
     rm -rf $HOME/.sdkman/archives/* && \
     rm -rf $HOME/.sdkman/tmp/*"
 
-# Copy files for the sync script
-COPY _sync/SkillerWhaleSync.java /app/sync/
-WORKDIR /app/sync
-
-# Copy files for the sync script
-COPY _sync /app/sync
-WORKDIR /app/sync
+RUN curl -s -L `curl -s https://api.github.com/repos/skiller-whale/learnersync/releases/latest | jq -r -c '.assets[] | .browser_download_url' | grep ubuntu` >download.zip
+RUN unzip -q download.zip SkillerWhaleSync -d /usr/local/bin
+RUN chmod +x /usr/local/bin/SkillerWhaleSync
 
 # Set the working directory to be the exercises dir (when sh is run)
 WORKDIR /app/exercises
 RUN ln -s /root/.ash_history /app/.command_history
 
 # Clear the history on startup, and run the sync
-CMD > /root/.ash_history && /root/.sdkman/candidates/java/current/bin/java /app/sync/SkillerWhaleSync.java
+CMD > /root/.ash_history && SkillerWhaleSync
