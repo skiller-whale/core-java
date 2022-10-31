@@ -1,4 +1,4 @@
-FROM debian
+FROM --platform=linux/amd64 debian:bullseye
 
 RUN apt update
 RUN apt -qq -y install curl wget unzip zip jq
