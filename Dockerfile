@@ -4,9 +4,7 @@ RUN apt update
 RUN apt -qq -y install curl wget unzip zip jq openjdk-18-jdk
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
-RUN curl -s -L `curl -s https://api.github.com/repos/skiller-whale/learnersync/releases/latest | jq -r -c '.assets[] | .browser_download_url' | grep ubuntu` >download.zip
-RUN unzip -jq download.zip build/libs/SkillerWhaleSync.jar -d /usr/local/bin
-RUN chmod +x /usr/local/bin/SkillerWhaleSync.jar
+RUN curl -s -L `curl -s https://api.github.com/repos/skiller-whale/learnersync/releases/latest | jq -r -c '.assets[] | .browser_download_url' | grep .jar` >/usr/local/bin/SkillerWhaleSync.jar
 
 # Set the working directory to be the exercises dir (when sh is run)
 WORKDIR /app/exercises
