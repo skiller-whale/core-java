@@ -1,8 +1,6 @@
-
 import java.io.IOException;
 import java.net.*;
 import java.net.http.*;
-import java.util.function.*;
 
 public class FunctionTypesTest {
 
