@@ -1,5 +1,3 @@
-// FIXME: Add RunnerType, ParserType, BuilderType and FinderType
-
 import java.io.IOException;
 import java.net.*;
 import java.net.http.*;
