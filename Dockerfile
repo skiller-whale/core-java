@@ -1,7 +1,6 @@
 FROM debian:bookworm
 
-RUN apt update
-RUN apt -qq -y install curl openjdk-18-jdk
+RUN apt update && apt -qq -y install curl openjdk-17-jre
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
 RUN curl -s -L https://github.com/skiller-whale/learnersync/releases/latest/download/SkillerWhaleSync.jar >SkillerWhaleSync.jar >/usr/local/bin/SkillerWhaleSync.jar
