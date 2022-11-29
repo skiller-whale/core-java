@@ -1,10 +1,17 @@
 FROM debian:bookworm
 
-RUN apt update && apt -qq -y install curl
+ARG name=SkillerWhaleSync
+# updates from https://github.com/skiller-whale/learnersync/releases/ when you need them
+ARG version=0.1.2
+ARG osarch=linux-amd64
+
+# RUN apt update && apt -qq -y install curl
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
-RUN curl -s -L https://github.com/skiller-whale/learnersync/releases/latest/download/SkillerWhaleSync-linux-amd64 >/usr/local/bin/SkillerWhaleSync && chmod +x /usr/local/bin/SkillerWhaleSync
+ADD https://github.com/skiller-whale/learnersync/releases/download/v${version}/${name}-${osarch} /usr/local/bin/${name}
 # in development: COPY SkillerWhaleSync-linux-amd64 /usr/local/bin/SkillerWhaleSync
+RUN chmod +x /usr/local/bin/$name
+
 
 # Set the working directory to be the exercises dir (when sh is run)
 WORKDIR /app/exercises
