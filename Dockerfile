@@ -1,4 +1,5 @@
 FROM debian:bookworm
+RUN apt update && apt -qq -y install ca-certificates
 
 ARG name=SkillerWhaleSync
 # updates from https://github.com/skiller-whale/learnersync/releases/ when you need them
