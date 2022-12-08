@@ -1,8 +1,7 @@
 version: '3.7'
 services:
   java:
-    build:
-      context: .
+    image: ghcr.io/skiller-whale/learnersync:dockerize
     network_mode: host
     environment:
       SERVER_URL: https://train.skillerwhale.com/
