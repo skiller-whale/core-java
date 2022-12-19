@@ -1,6 +1,13 @@
 version: '3.7'
 services:
   java:
+    profiles: ["java"] # exclude from unqualified "docker-compose up"
+    image: eclipse-temurin:17
+    command: /bin/bash -c 'cd /app/exercises; exec /bin/bash'
+    volumes:
+      - ./exercises:/app/exercises
+      - ./attendance_id:/app/sync/attendance_id
+  sync:
     image: ghcr.io/skiller-whale/learnersync:dockerize
     network_mode: host
     environment:
@@ -12,5 +19,5 @@ services:
     volumes:
       - ./exercises:/app/exercises
       - ./attendance_id:/app/sync/attendance_id
-    stdin_open: true
     tty: true
+    stdin_open: true
