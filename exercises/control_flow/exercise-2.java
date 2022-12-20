@@ -2,42 +2,46 @@
 // IF AND ELSE                              //
 // ======================================== //
 /*
- * If you run the code below, it should print an introductory rhyme, and then two other rhymes.
+ * If you run the code below, it should print an introductory rhyme, followed by:
  *
- * We would like the code to print only one of the other two rhymes, depending which rhyming key it is given.
+ *    A rhyme by Lewis Carroll.
+ *    A rhyme about orcas.
  *
- * Improve the 'if' statement, and add nested conditionals, so that:
+ * However, the code should print only one of these two rhymes, depending on whether printRhyme is given:
  *
- *    1. The intro rhyme is printed only if the rhymingKey is set to either keyword.
- *    2. The Carroll rhyme is printed only if the ryhmingKey is set to the first keyword.
- *    3. The Orca rhyme is printed only if the rhymingKey is set to the second keyword.
- *    4. If the key is not set to either keyword, the output should print "I can't rhyme without my key!".
+ *    The prompt: "carroll".
+ *    The prompt: "orca".
+ *
+ * Modify the 'if' statement in printRhyme, and add nested conditionals, so that:
+ *
+ *    1. The intro rhyme is printed only if either prompt is given to printRhyme.
+ *    2. The Carroll rhyme is printed only if the prompt is "carroll".
+ *    3. The Orca rhyme is printed only if the prompt is "orca".
+ *    4. If the prompt is neither keyword, print "I can't rhyme without my prompt!".
+ *
+ * Run the application to test your code.
  */
 
-class Rhyme {
-    public static void main(String[] args) {
-        var intro = new Rhymes("intro");
-        var carroll = new Rhymes("carroll");
-        var orca = new Rhymes("orca");
-        // Ignore the code above
-        String keyword1 = "sea";
-        String keyword2 = "ocean";
-        String rhymingKey;
-        // Modify the code below
-        if (true) {
-            intro.rhyme();   // Print the intro rhyme
-            carroll.rhyme(); // Print the Carroll rhyme
-            orca.rhyme();    // Print the Orca rhyme
-          }
+class Rhymes {
+  static String intro = "Here is a rhyme about some things aquatic\nOne is by Carroll\nYou might think both are erratic!\n\n";
+  static String carroll = "Beneath the waters of the sea\nAre lobsters thick as thick can be\nThey love to dance with you and me\nMy own, my gentle Salmon!\n\n";
+  static String orca = "Under the bustle of the ocean\nSwim orcas, constantly in motion\nThey are black and white, a magnificent sight\nIt really is quite a commotion!\n\n";
+
+  static void printRhyme(String prompt) {
+    // modify the code below
+    if (true) {
+      System.out.print(intro);   // Print the intro rhyme
+      System.out.print(carroll); // Print the Carroll rhyme
+      System.out.print(orca);    // Print the Orca rhyme
     }
+  }
+
+  public static void main(String[] args) {
+    boolean likesOrcas = true;
+    // change the code below for the Ternary Operator exercise
+    printRhyme("orca");
+  }
 }
-
-/*
- * Set the rhymingKey to one of the keywords.
- *
- * Run the file to check that only the intro and the ryhme corresponding to the keyword are printed.
- */
-
 
 
 
@@ -47,40 +51,6 @@ class Rhyme {
 // THE TERNARY OPERATOR       //
 // ========================== //
 /*
- * Re-factor the rhyming code so that the value assigned to rhymingKey depends on
- * the boolean value of a separate likesOrcas variable.
+ * Change the call to printRhyme to use a ternary operator.
+ * This should pass in the "orca" prompt or "carroll" prompt depending on the value of the boolean 'likesOrcas' variable.
  */
-
-
-
-
-
-
-
-
-
-// ------------------------------------------------------ //
-// Do not edit the code here
-// ------------------------------------------------------ //
-
-record Rhymes (String name) {
-    void rhyme() {
-      if (name == "intro") {
-        System.out.println("Here is a rhyme about some things aquatic");
-        System.out.println("One is by Carroll");
-        System.out.println("You might think both are erratic!");
-        System.out.println("");
-      } else if (name == "carroll") {
-        System.out.println("Beneath the waters of the sea");
-        System.out.println("Are lobsters thick as thick can be");
-        System.out.println("They love to dance with you and me");
-        System.out.println("My own, my gentle Salmon!");
-    } else if (name == "orca") {
-        System.out.println("Under the bustle of the ocean");
-        System.out.println("Swim orcas, constantly in motion");
-        System.out.println("They are black and white, a magnificent sight");
-        System.out.println("It really is quite a commotion!");
-    }
-  }
-}
-

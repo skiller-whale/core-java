@@ -15,16 +15,19 @@
  *
  * The following code will convert an integer into a binary string.
  *
- *        int num = 40;
- *        String binary = Integer.toBinaryString(num);
+ *        Integer.toBinaryString(40);
+ *
+ * A number is even if its remainder after division by 2 is zero, e.g., 4 % 2 = 0.
  *
  */
 class BinaryCounting {
     public static void main(String[] args) throws InterruptedException {
         // Code here
         while (...) {
+
             // Code here
-            System.out.println("..."); // Don't change this
+
+            System.out.printf(" sheep\n...\n"); // Don't edit this
             Thread.sleep(1000); // Loop every second
         }
     }
