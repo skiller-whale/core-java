@@ -4,27 +4,29 @@
 
 /* PART 1.
 ----------
-Add the following fields to the Book class.
-These should be of type String, int, long, or boolean.
+Add the following fields to the Book class:
+
   * `title`
   * `author`
   * `year`
   * `isbn` (a 13-digit number)
-  * `available` (to determine whether a book is on loan or not)
+  * `available` (to indicate whether a book is on loan or not)
+
+These should be of type String, int, boolean, or long.
 */
 
 /* PART 2.
 ----------
-Define two methods, lendBook and returnBook, to implement the following functionality:
-If a book is lent to a library user, it is no longer available to be borrowed.
-If a book is returned to the library, it is available to be borrowed.
+Define two instance methods, lendBook and returnBook, to implement the following functionality:
+
+* If `this.lendBook()` is called, `this` is not available to be borrowed
+* If `this.returnBook()` is called, `this` is available to be borrowed
 */
 
 /* PART 3.
 ----------
-Define a constructor method for the Book class.
-The method should set every instance variable.
- */
+Define a constructor method for the Book class that initialises every instance variable.
+*/
 
 public class Book {
 
