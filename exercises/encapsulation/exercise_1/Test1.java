@@ -4,6 +4,6 @@ public class Test1 {
         Book test2 = new Book(null, null, 0, null, 0l, false);
         Book test3 = new Book(null, null, 0, null, 0l, false);
         Book test4 = new Book(null, null, 0, null, 0l, false);
-        System.out.printf("A total of %s books have been created\n", Book.collection);
+        System.out.printf("A total of %s books have been created\n", Book.totalBooks);
     }
 }

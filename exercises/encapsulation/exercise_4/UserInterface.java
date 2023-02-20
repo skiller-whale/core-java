@@ -35,7 +35,7 @@ public class UserInterface {
         System.out.printf("\nEnter your choice: ");
         choice = input.nextLine();
         System.out.println("");
-        int count = Book.genre(choice);
+        int count = Book.getBooksOfGenre(choice);
         System.out.printf("There are %s %s books in the library\n", count, choice);
     }
 
