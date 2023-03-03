@@ -7,7 +7,6 @@
  *  1. The Account class has an instance method `display`.
  *     - Override this method for Current and Savings.
  *     - For each subclass, the method should print any inherited fields, and any fields unique to the class.
- *     - Ensure that an account's balance or interest amount is displayed in pounds, not pence.
  *
  *  2. In class OrcaBank, add a new `public static` method called `printCustomerInfo`.
  *     - This should take as input an array of `Account`s and `display` the information for each account.
