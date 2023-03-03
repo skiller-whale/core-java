@@ -1,26 +1,31 @@
 // ========================================== //
-// INHERITANCE: EXERCISE 2                    //
+// INHERITANCE: EXERCISE 3                    //
 // ========================================== //
 /*
- * The Savings and Current classes have been updated to contain several
- * methods for (e.g.) modifying an account's balance and making transfers
- * between different accounts.
+ * The Savings and Current classes have been updated to contain a few methods.
  *
- * Currently, the Account superclass only implements a set of fields for
- * its subclasses to inherit.
+ * Currently, the Account superclass does not implement any methods for its
+ * subclasses, so there is some code duplication across each subclass.
  *
  *  1. Define a `transfer` method in Account that has the common functionality
- *     between the existing 'transfer' and 'transferTo...' methods.
+ *     between the existing 'transfer' methods. Update the subclasses accordingly.
  *
  *     HINT: In Savings you can call `super`.
  *
- *  2. Implement appropriate constructors for each class.
+ *  2. Refactor the code so that the 'deposit' and 'withdrawal' methods are
+ *     not duplicated between Savings and Current.
  */
 
  class Account {
     int accountNumber;
     int sortCode;
     int balancePence;
+
+    Account(int accountNumber, int sortCode, int balancePence) {
+        this.accountNumber = accountNumber;
+        this.sortCode = sortCode;
+        this.balancePence = balancePence;
+    }
 }
 
 class Current extends Account {
@@ -28,9 +33,7 @@ class Current extends Account {
     int pin;
 
     Current(int accountNumber, int sortCode, int balancePence, long debitCardNumber, int pin) {
-        this.accountNumber = accountNumber;
-        this.sortCode = sortCode;
-        this.balancePence = balancePence;
+        super(accountNumber, sortCode, balancePence);
         this.debitCardNumber = debitCardNumber;
         this.pin = pin;
     }
@@ -43,18 +46,7 @@ class Current extends Account {
         balancePence -= amountPence;
     }
 
-    // Current account can make external transfers
-    public boolean transferToCurrent(Current transferee, int amountPence) {
-        if (balancePence >= amountPence) {
-            withdraw(amountPence);
-            transferee.deposit(amountPence);
-            return true;
-        }
-        return false;
-    }
-
-    // Transfer to another savings account
-    public boolean transferToSavings(Savings transferee, int amountPence) {
+    public boolean transfer(Account transferee, int amountPence) {
         if (balancePence >= amountPence) {
             withdraw(amountPence);
             transferee.deposit(amountPence);
@@ -68,9 +60,7 @@ class Savings extends Account {
     double interestRate;
 
     Savings(int accountNumber, int sortCode, int balancePence, double interestRate) {
-        this.accountNumber = accountNumber;
-        this.sortCode = sortCode;
-        this.balancePence = balancePence;
+        super(accountNumber, sortCode, balancePence);
         this.interestRate = interestRate;
     }
 
@@ -82,9 +72,8 @@ class Savings extends Account {
         balancePence -= amountPence;
     }
 
-    // Savings account cannot transfer to other clients' accounts
-    public boolean transfer(Current transferee, int amountPence) {
-        // A client's bank accounts will implement the same sort code
+    // Savings account can transfer only to accounts with the same sort code
+    public boolean transfer(Account transferee, int amountPence) {
         if (balancePence >= amountPence && sortCode == transferee.sortCode) {
             withdraw(amountPence);
             transferee.deposit(amountPence);

@@ -1,18 +1,22 @@
 public class Test {
     public static void main(String[] args) {
-        Account[] sealionDion = new Account[2];
-        Account[] dolphinLundgren = new Account[2];
-        sealionDion[0] = new Current(23984753, 397646, 4893407, 1098234823048723l, 3481);
-        sealionDion[1] = new Savings(23984754, 397646, 846139183, 0.41d);
-        dolphinLundgren[0] = new Current(73489597, 209384, 2093818, 2390847502938751l, 2397);
-        dolphinLundgren[1] = new Savings(73489598, 209384, 419871441, 0.41d);
-        System.out.printf("SeaLion Dion\n");
-        System.out.println("-----------------");
-        OrcaBank.printCustomerInfo(sealionDion);
-        System.out.printf("\n-----------------\n\n");
-        System.out.printf("Dolphin Lundgren\n");
-        System.out.println("-----------------");
-        OrcaBank.printCustomerInfo(dolphinLundgren);
-        System.out.printf("\n-----------------\n\n");
+        // Account class and two subclasses
+        Account sealionDion = new Account(0, 0, 0);
+        Current sealionCurrent = new Current(23984753, 397646, 4893407, 1098234823048723l, 3481);
+        Savings sealionSavings = new Savings(23984754, 397646, 846139183, 0.41d);
+        // Print output for the exercise
+        System.out.println("OrcaBank: Giving Your Money Porpoise");
+        System.out.println("************************************");
+        System.out.printf("%s: SeaLion Dion\n", sealionDion.getClass());
+        System.out.println("------------------------------------");
+        System.out.printf("Current Account -- Balance: £%s\n", (sealionCurrent.balancePence / 100d));
+        System.out.printf("Account Number:\t%s\n", sealionCurrent.accountNumber);
+        System.out.printf("Sort Code:\t%s\n", sealionCurrent.sortCode);
+        System.out.printf("Debit Card:\t%s\n", sealionCurrent.debitCardNumber);
+        System.out.printf("PIN:\t\t%s\n\n", sealionCurrent.pin);
+        System.out.printf("Savings Account -- Balance: £%s\n", (sealionSavings.balancePence / 100d));
+        System.out.printf("Account Number:\t%s\n", sealionSavings.accountNumber);
+        System.out.printf("Sort Code:\t%s\n", sealionSavings.sortCode);
+        System.out.printf("Interest:\t£%s\n", (sealionSavings.calculateInterest() / 100d));
     }
 }
