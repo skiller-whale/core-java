@@ -16,25 +16,11 @@ import java.util.concurrent.locks.*;
  *
  * The `fetchQuote` function uses `addUniqueLine` to create a file which
  * contains all of the unique quotes returned by 'http://shakespeare.com/quote'.
- *
- * At the moment, this code suffers from a race condition:
- *
- *      1. Run this program, and look at the contents of the quotes.txt file that's been
- *      created in this directory. If the program were working correctly, there would
- *      be 38 quotes in the file.
- *
- *      You may see some garbled content, and various IO Exceptions.
- *
- *      2. Use a lock on a `Utility` method to protect the file access, and
- *      prevent different threads from interfering with the updates.
- *
- *      3. Run the program again, and make sure that the quotes.txt file now contains
- *      38 rows, all of which should start with 'Quote N' for some quote number.
  */
 
 public class Main {
     public static void main(String[] args) throws IOException, InterruptedException {
-        var myLatch = new CountDownLatch(1000);
+        var myLatch = new CountDownLatch(300);
         final Utility object = new Utility();
         object.createQuotes();
         Runnable r = () -> {
@@ -44,7 +30,7 @@ public class Main {
                 System.out.println(ex);
             } finally { myLatch.countDown(); }
         };
-        for (var i = 0; i < 1000; i++) {
+        for (var i = 0; i < 300; i++) {
             Thread.ofVirtual().start(r);
         }
         myLatch.await();
@@ -61,11 +47,11 @@ class Utility {
     }
 
     void addUniqueLine(Path file, String line) throws IOException {
-        List<String> lines = Files.readAllLines(Paths.get("quotes.txt"));
+        List<String> lines = Files.readAllLines(file);
         if (!lines.contains(line)) {
             lines.add(line);
         }
-        Files.write(Paths.get("quotes.txt"), (String.join("\n", lines)+"\n").getBytes(), StandardOpenOption.CREATE);
+        Files.write(file, (String.join("\n", lines)+"\n").getBytes(), StandardOpenOption.CREATE);
     }
 
     void fetchQuote() throws InterruptedException, IOException  {
