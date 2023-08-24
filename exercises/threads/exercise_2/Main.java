@@ -20,7 +20,7 @@ import java.util.concurrent.CountDownLatch;
 public class Main {
     public static void main(String[] args) throws InterruptedException, IOException {
         final Utility object = new Utility();
-        final List<String> quotes = new ArrayList(10);
+        final List<String> quotes = new ArrayList<String>(10);
         for (int i = 0; i < 10; i++) {
             try {
                 String quote = object.getQuote();

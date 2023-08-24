@@ -60,10 +60,10 @@ class Account {
     long balancePence;
     ReentrantLock lock;
 
-    Account(int accountNumber, long balancePence, ReentrantLock lock) {
+    Account(int accountNumber, long balancePence) {
         this.accountNumber = accountNumber;
         this.balancePence = balancePence;
-        this.lock = lock;
+        this.lock = new ReentrantLock();
     }
 
     public void deposit(long amountPence) {
@@ -93,9 +93,9 @@ class Account {
 
     // Factory method to generate accounts
     public static List<Account> generateAccounts(int number) {
-        List<Account> accounts = new ArrayList(number);
+        List<Account> accounts = new ArrayList<Account>(number);
         for (int i = 0; i < number; i++) {
-            accounts.add(new Account(i, 1000000, new ReentrantLock()));
+            accounts.add(new Account(i, 1000000));
         }
         return accounts;
     }
