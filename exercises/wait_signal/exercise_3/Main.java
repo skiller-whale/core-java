@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class Main {
     public static final java.util.Random random = new java.util.Random();
-    public static final int PRODUCERS = 50, CONSUMERS = 50, ITERATIONS = 50;
+    public static final int PRODUCERS = 1000, CONSUMERS = 1000, ITERATIONS = 1000;
     public static void main(String[] args) throws InterruptedException {
         for (int i = 0; i < 10; i++) {
             runTest();
@@ -28,32 +28,29 @@ public class Main {
                 try {
                     startLatch.await();
                     for (int j = 0; j < ITERATIONS; j++) {
-                        while (!queue.push(digit)) {
-                            Thread.sleep(random.nextInt(10));
-                        }
+                        queue.push(j*PRODUCERS + digit);
                     }
                     finishLatch.countDown();
                 } catch (InterruptedException ex) {
                     System.out.println(ex);
                 }
             };
-            Thread.ofPlatform().start(producer);
+            Thread.ofVirtual().start(producer);
         }
         for (int i = 0; i < CONSUMERS; i++) {
+            final var digit = i;
             Runnable consumer = () -> {
                 try {
                     startLatch.await();
                     for (int j = 0; j < ITERATIONS; j++) {
-                        while (queue.pop() == null) {
-                            Thread.sleep(random.nextInt(10));
-                        }
+                        queue.pop();
                     }
                     finishLatch.countDown();
                 } catch (InterruptedException ex) {
                     System.out.println(ex);
                 }
             };
-            Thread.ofPlatform().start(consumer);
+            Thread.ofVirtual().start(consumer);
         }
         startLatch.countDown(); // start all the threads at once
         if (finishLatch.await(10, java.util.concurrent.TimeUnit.SECONDS)) {
