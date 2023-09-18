@@ -5,6 +5,12 @@ public class MyCountDownLatch {
     private Lock lock = new ReentrantLock();
     final Condition isZero = lock.newCondition();
 
+    public int count() {
+        lock.lock();
+        try { return count; }
+        finally { lock.unlock(); }
+    }
+
     public MyCountDownLatch(int count) {
         this.count = count;
     }
@@ -13,10 +19,11 @@ public class MyCountDownLatch {
        // TODO: implement this method
     }
 
-    public void await() throws InterruptedException {
+    public void await() {
         lock.lock();
         while (count != 0) {
-            isZero.await();
+            try { isZero.await(); }
+            catch (InterruptedException e) { }
         }
         lock.unlock();
     }

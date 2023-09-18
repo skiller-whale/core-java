@@ -1,36 +1,33 @@
 import java.util.*;
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
 
-/* Test rig for MyBlockingQueue<T>  which runs a test with 500 producers and 500 consumers, each
- * of which performs 500 iterations.  The test is run 10 times and the total running time is
- * printed.  The test is run 10 times to get a better estimate of the average running time.
+/* Test rig for MyBlockingQueue<T>.
+ * This runs a test with 500 producers and 500 consumers, each of which performs 500 iterations.
+ * The test is run 10 times and the total running time for each thread is printed.
+ * The test is run 10 times to get a better estimate of the average running time.
  */
 public class Main {
-    public static final java.util.Random random = new java.util.Random();
-    public static final int PRODUCERS = 1000, CONSUMERS = 1000, ITERATIONS = 1000;
+    public static final int PRODUCERS = 500, CONSUMERS = 500, ITERATIONS = 5000;
+    public static long totalRuntime   = 0;
     public static void main(String[] args) throws InterruptedException {
         for (int i = 0; i < 10; i++) {
             runTest();
         }
+        System.out.printf("Average running time for %d producers, %d consumers = %dms\n", PRODUCERS, CONSUMERS, totalRuntime / 10);
     }
 
     public static void runTest() throws InterruptedException {
-        MyBlockingQueue<Integer> queue = new MyBlockingQueue<Integer>();
-
-        final long start = System.currentTimeMillis();
-        var startLatch = new CountDownLatch(1);
-        var finishLatch = new CountDownLatch(PRODUCERS + CONSUMERS);
+        MyBlockingQueue<Integer> queue  = new MyBlockingQueue<Integer>();
+        final long start                = System.currentTimeMillis();
+        var myLatch                     = new CountDownLatch(PRODUCERS + CONSUMERS);
 
         for (int i = 0; i < PRODUCERS; i++) {
-            final var digit = i;
             Runnable producer = () -> {
                 try {
-                    startLatch.await();
-                    for (int j = 0; j < ITERATIONS; j++) {
-                        queue.push(j*PRODUCERS + digit);
+                    for (int j = 0; j < PRODUCERS; j++) {
+                        queue.push(j * PRODUCERS);
                     }
-                    finishLatch.countDown();
+                    myLatch.countDown();
                 } catch (InterruptedException ex) {
                     System.out.println(ex);
                 }
@@ -38,26 +35,21 @@ public class Main {
             Thread.ofVirtual().start(producer);
         }
         for (int i = 0; i < CONSUMERS; i++) {
-            final var digit = i;
             Runnable consumer = () -> {
                 try {
-                    startLatch.await();
-                    for (int j = 0; j < ITERATIONS; j++) {
+                    for (int j = 0; j < CONSUMERS; j++) {
                         queue.pop();
                     }
-                    finishLatch.countDown();
+                    myLatch.countDown();
                 } catch (InterruptedException ex) {
                     System.out.println(ex);
                 }
             };
             Thread.ofVirtual().start(consumer);
         }
-        startLatch.countDown(); // start all the threads at once
-        if (finishLatch.await(10, java.util.concurrent.TimeUnit.SECONDS)) {
-            final long elapsed = System.currentTimeMillis() - start;
-            System.out.printf("Total running time for %d producers, %d consumers = %dms\n", PRODUCERS, CONSUMERS, elapsed);
-        } else {
-            System.out.println("Timeout waiting for threads to finish (deadlock?)");
-        }
+        myLatch.await();
+        final long elapsed = System.currentTimeMillis() - start;
+        totalRuntime += elapsed;
+        System.out.printf("Total running time for %d producers, %d consumers = %dms\n", PRODUCERS, CONSUMERS, elapsed);
     }
 }

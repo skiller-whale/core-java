@@ -4,6 +4,12 @@ public class MyCountDownLatch {
     private int count;
     private Lock lock = new ReentrantLock();
 
+    public int count() {
+        lock.lock();
+        try { return count; }
+        finally { lock.unlock(); }
+    }
+
     public MyCountDownLatch(int count) {
         this.count = count;
     }

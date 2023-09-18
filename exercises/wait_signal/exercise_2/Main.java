@@ -3,39 +3,45 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 /* Test rig for MyCountDownLatch.
- * This runs a test with 1000 threads, each of which just counts up to 500.
+ * This runs a test with 2000 threads, each of which just counts up to 500.
  * The test is run 10 times and the total running time is printed.
  * The test is run 10 times to get a better estimate of the average running time.
  */
 public class Main {
     public static final Random random  = new Random();
-    public static final int ITERATIONS = 2000;
+    public static final int TESTS = 20, COUNTDOWN_THREADS = 200000, AWAIT_THREADS = 5000;
+    public static long totalRuntime    = 0;
     public static void main(String[] args) throws InterruptedException {
-        for (int i = 0; i < 10; i++) {
+        System.out.print("Testing MyCountDownLatch with "+COUNTDOWN_THREADS+" countdown threads and "+AWAIT_THREADS+" await threads × "+TESTS+"\n");
+        for (int i = 0; i < TESTS; i++) {
             runTest();
         }
+        System.out.printf("\nAverage: %dms\n", totalRuntime / TESTS);
     }
 
     public static void runTest() throws InterruptedException {
         final long start = System.currentTimeMillis();
-        var startLatch   = new MyCountDownLatch(1);
-        var finishLatch  = new MyCountDownLatch(ITERATIONS);
-
-        for (int i = 0; i < ITERATIONS; i++) {
-            final var digit = i;
-            Runnable r = () -> {
-                startLatch.await();
-                var count = 0;
-                for (int j = 0; j < 500; j++) {
-                    count++;
-                }
-                finishLatch.countDown();
-            };
-            Thread.ofVirtual().start(r);
+        var myLatch      = new MyCountDownLatch(COUNTDOWN_THREADS);
+        for (int i = 0; i < COUNTDOWN_THREADS; i++) {
+            Thread.ofVirtual().start(() -> {
+                try { Thread.sleep(200); }
+                catch (InterruptedException e) { }
+                myLatch.countDown();
+            });
         }
-
-        startLatch.countDown(); // Start all the threads at once
-        final long elapsed = System.currentTimeMillis() - start;
-        System.out.printf("Total running time for %d threads = %dms\n", ITERATIONS, elapsed);
+        List<Thread> awaiters = new ArrayList<Thread>();
+        for (int i = 0; i < AWAIT_THREADS; i++) {
+            awaiters.add(Thread.ofVirtual().start(() -> myLatch.await()));
+        }
+        for (var t : awaiters) {
+            t.join();
+        }
+        if (myLatch.count() != 0) {
+            System.out.println("Count is not zero, is await() working properly?");
+        } else {
+            final long elapsed = System.currentTimeMillis() - start;
+            totalRuntime += elapsed;
+            System.out.print(elapsed+"ms ");
+        }
     }
 }
