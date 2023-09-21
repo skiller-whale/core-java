@@ -22,4 +22,9 @@ class Hasher {
         SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
         return factory.generateSecret(spec).getEncoded();
     }
+
+    public static String toHex(byte[] bytes) {
+        java.math.BigInteger bigInt = new java.math.BigInteger(1, bytes);
+        return String.format("%0" + (bytes.length << 1) + "x", bigInt);
+    }
 }

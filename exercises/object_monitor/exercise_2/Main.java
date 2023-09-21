@@ -16,7 +16,7 @@ public class Main {
                 String plain  = Password.plainPasswords.get(digit);
                 byte[] hashed = Password.hash(plain);
                 Password.hashedPasswords.add(hashed);
-                System.out.printf("Plaintext: %s --> Hashed: %s\n", plain, hashed);
+                System.out.printf("Plaintext: %s --> Hashed: %s\n", plain, Hasher.toHex(hashed));
                 myLatch.countDown();
             };
             Thread.ofVirtual().start(r);

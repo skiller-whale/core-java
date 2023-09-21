@@ -9,12 +9,12 @@ import java.util.concurrent.locks.*;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException, IOException {
-        var myLatch = new CountDownLatch(5000);
+        var myLatch = new CountDownLatch(800);
         final WeatherReport object = new WeatherReport();
         object.createFile(WeatherReport.tempsPath);
         object.createFile(WeatherReport.rainfallPath);
         final long start = System.currentTimeMillis();
-        for (var i = 0; i < 5000; i++) {
+        for (var i = 0; i < 800; i++) {
             final var digit = i;
             Thread.ofVirtual().start(() -> {
                 try {
