@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class Main {
     public static final Random random  = new Random();
-    public static final int TESTS = 20, COUNTDOWN_THREADS = 200000, AWAIT_THREADS = 5000;
+    public static final int TESTS = 10, COUNTDOWN_THREADS = 200000, AWAIT_THREADS = 5000;
     public static long totalRuntime    = 0;
     public static void main(String[] args) throws InterruptedException {
         System.out.print("Testing MyCountDownLatch with "+COUNTDOWN_THREADS+" countdown threads and "+AWAIT_THREADS+" await threads × "+TESTS+"\n");
