@@ -10,8 +10,8 @@ Then:
 
 * from the training session, note down the _Your ID_ field  in the top-right;
 * copy this into a file called `attendance_id`;
-* run `docker-compose up` in one window;
-* run `docker-compose run java` in another window;
+* run `docker compose up` in one window;
+* run `docker compose run java` in another window;
 * open your code editor in the `exercises` folder.
 
 You should see the words "Sync Active" in the top right of your training session.
