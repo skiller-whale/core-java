@@ -21,7 +21,7 @@ public class MyCountDownLatch {
 
     public void await() {
         lock.lock();
-        while (count != 0) {
+        while (count > 0) {
             try { isZero.await(); }
             catch (InterruptedException e) { }
         }

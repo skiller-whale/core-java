@@ -17,7 +17,7 @@ public class MyCountDownLatch {
     public void countDown() {
         lock.lock();
         try {
-            if (count != 0) {
+            if (count > 0) {
                 count--;
             }
         } finally { lock.unlock(); }

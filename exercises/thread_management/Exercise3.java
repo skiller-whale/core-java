@@ -11,12 +11,13 @@ public class Exercise3 {
         // This is the bounds for the number of lines in the image we're going to render.
         // lower = definitely fast enough, upper bound = definitely too slow.
         int lower = 9, upper = 100000;
+        boolean warmup = true;
         while (upper - lower > 100) {
 
             // Decide how big the image should be based on the upper & lower bounds
             int height = lower + ((upper - lower) / 2);
             int width  = height*16/9;
-            System.out.printf("Rendering %d×%d: ", width, height);
+            System.out.printf("Rendering %05d lines: ", width, height);
 
             // Render the image, but bail out if it takes too long.
             TinyRayTracer rt = new TinyRayTracer(Scene.DEFAULT, width, height, 1.05f);
@@ -28,7 +29,10 @@ public class Exercise3 {
 
             // Decide whether the upper or lower bound needs to move depending on whether
             // we made the deadline or not.
-            if (t1 - t0 > MAX_TIME) {
+            if (warmup) {
+                System.out.println("Warmup");
+                warmup = false;
+            } else if (t1 - t0 > MAX_TIME) {
                 System.out.println("❌");
                 upper = height;
             } else {
@@ -36,6 +40,6 @@ public class Exercise3 {
                 lower = height;
             }
         }
-        System.out.println("Largest height picture we could render in "+MAX_TIME+"ms is "+lower);
+        System.out.println("Largest height picture we could render in "+MAX_TIME+"ms is "+lower+" lines");
     }
 }

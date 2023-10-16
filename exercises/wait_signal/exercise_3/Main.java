@@ -32,7 +32,7 @@ public class Main {
                     System.out.println(ex);
                 }
             };
-            Thread.ofVirtual().start(producer);
+            Thread.ofPlatform().start(producer);
         }
         for (int i = 0; i < CONSUMERS; i++) {
             Runnable consumer = () -> {
@@ -45,7 +45,7 @@ public class Main {
                     System.out.println(ex);
                 }
             };
-            Thread.ofVirtual().start(consumer);
+            Thread.ofPlatform().start(consumer);
         }
         myLatch.await();
         final long elapsed = System.currentTimeMillis() - start;

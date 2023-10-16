@@ -2,8 +2,8 @@ import java.util.*;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
-/* Test rig for MyBlockingQueue<T>  which runs a test with 500 producers and 500 consumers, each
- * of which performs 500 iterations.  The test is run 10 times and the total running time is
+/* Test rig for MyBlockingQueue<T> which runs a test with 250 producers and 250 consumers, each
+ * of which performs 250 iterations. The test is run 10 times and the total running time is
  * printed.  The test is run 10 times to get a better estimate of the average running time.
  */
 public class Main {

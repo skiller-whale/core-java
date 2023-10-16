@@ -10,18 +10,20 @@ import java.util.concurrent.locks.*;
 public class Main {
     public static void main(String[] args) throws InterruptedException, IOException {
         var myLatch = new CountDownLatch(800);
-        final WeatherReport object = new WeatherReport();
-        object.createFile(WeatherReport.tempsPath);
-        object.createFile(WeatherReport.rainfallPath);
+        final WeatherReport weatherReport = new WeatherReport();
+        weatherReport.createFile(WeatherReport.tempsPath);
+        weatherReport.createFile(WeatherReport.rainfallPath);
+
         final long start = System.currentTimeMillis();
         for (var i = 0; i < 800; i++) {
             final var digit = i;
             Thread.ofVirtual().start(() -> {
                 try {
+                    // Alternate between writing temperatures and writing rainfall data.
                     if (digit % 2 == 0) {
-                        object.writeTemp();
+                        weatherReport.writeTemp();
                     } else {
-                        object.writeRainfall();
+                        weatherReport.writeRainfall();
                     }
                     myLatch.countDown();
                 } catch (InterruptedException | IOException ex) {
@@ -29,15 +31,19 @@ public class Main {
                 }
             });
         }
+
+        // Wait for all threads to complete.
         myLatch.await();
+
         final long elapsed = System.currentTimeMillis() - start;
-        System.out.printf("Total time to retrieve weather data: %s second(s)\n", elapsed / 1000f);
+        System.out.printf("Total time to write weather data: %s second(s)\n", elapsed / 1000f);
     }
 }
 
 class WeatherReport {
     static final Path tempsPath    = Paths.get("temperatures.txt");
     static final Path rainfallPath = Paths.get("rainfall.txt");
+
     final Lock temperatureLock     = new ReentrantLock();
     final Lock rainfallLock        = new ReentrantLock();
 
@@ -51,6 +57,10 @@ class WeatherReport {
         try {
             List<String> temperatures = Files.readAllLines(tempsPath);
             temperatures.add(temp);
+
+            // PLEASE DON'T REMOVE THIS LINE!
+            // Add an extra sleep to simulate writing to an even larger file
+            Thread.sleep(20);
             Files.write(tempsPath, (String.join("\n", temperatures)+"\n").getBytes(), StandardOpenOption.CREATE);
         }
         finally { this.temperatureLock.unlock(); }
@@ -68,6 +78,10 @@ class WeatherReport {
         try {
             List<String> rainfall = Files.readAllLines(rainfallPath);
             rainfall.add(rain);
+
+            // PLEASE DON'T REMOVE THIS LINE!
+            // Add an extra sleep to simulate writing to an even larger file
+            Thread.sleep(20);
             Files.write(rainfallPath, (String.join("\n", rainfall)+"\n").getBytes(), StandardOpenOption.CREATE);
         }
         finally { this.rainfallLock.unlock(); }
