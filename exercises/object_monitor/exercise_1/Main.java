@@ -60,7 +60,7 @@ class WeatherReport {
 
             // PLEASE DON'T REMOVE THIS LINE!
             // Add an extra sleep to simulate writing to an even larger file
-            Thread.sleep(20);
+            try { Thread.sleep(20); } catch (InterruptedException ex) { }
             Files.write(tempsPath, (String.join("\n", temperatures)+"\n").getBytes(), StandardOpenOption.CREATE);
         }
         finally { this.temperatureLock.unlock(); }
@@ -81,7 +81,7 @@ class WeatherReport {
 
             // PLEASE DON'T REMOVE THIS LINE!
             // Add an extra sleep to simulate writing to an even larger file
-            Thread.sleep(20);
+            try { Thread.sleep(20); } catch (InterruptedException ex) { }
             Files.write(rainfallPath, (String.join("\n", rainfall)+"\n").getBytes(), StandardOpenOption.CREATE);
         }
         finally { this.rainfallLock.unlock(); }
