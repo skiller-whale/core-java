@@ -5,7 +5,6 @@ import java.net.http.HttpResponse.BodyHandlers;
 import java.util.concurrent.*;
 
 public class Exercise2 {
-    // "", Caldwell et. al.
     static final Map<String, URI> books = new HashMap<String, URI>() {{
         put("Moby Dick",
             URI.create("https://gutenberg.org/cache/epub/2701/pg2701.txt"));
@@ -16,8 +15,7 @@ public class Exercise2 {
     }};
     static final HttpClient http = HttpClient.newBuilder().build();
 
-    // Search `input` for `word`, return a List of character offsets in the input
-    // where that word occurs.
+    // This searches `input` for `word`, returning a List of character offsets in the input where that word occurs.
     public static List<Integer> indexWord(String input, String word) {
         List<Integer> index = new ArrayList<Integer>();
         for (int offset = -word.length(); offset != -1; index.add(offset)) {
@@ -27,7 +25,7 @@ public class Exercise2 {
     }
 
     public static void main(String[] args) throws InterruptedException, ExecutionException, java.io.IOException {
-        final List<String> WORDS = List.of("whale", "dolphn", "shark");
+        final List<String> WORDS = List.of("whale", "dolphin", "shark");
 
         for (var book : books.entrySet()) {
             String name = book.getKey();
@@ -36,7 +34,7 @@ public class Exercise2 {
 
             CompletableFuture<HttpResponse<String>> future = http.sendAsync(request, BodyHandlers.ofString());
 
-            // use thenAccept to print the number of each of WORDS in each book
+            // Create CompletableFutures here using `thenAccept` to print the number of each of the WORDS in each book
         }
 
         // Make sure the program prints 9 lines of output reliably

@@ -10,8 +10,11 @@ public class Exercise1 {
     static final HttpClient                  http = HttpClient.newBuilder().build();
 
     public static void indexWhales(String input, List<Integer> index) {
-        for (int offset = -5; offset != -1; index.add(offset)) {
-            offset = input.indexOf("whale", offset+5);
+        String word = "whale";
+        int offset = -word.length();
+        while (offset != -1) {
+            offset = input.indexOf(word, offset+word.length());
+            index.add(offset);
         }
     }
 

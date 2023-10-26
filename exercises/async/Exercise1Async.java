@@ -15,7 +15,7 @@ public class Exercise1Async {
     static final HttpClient http = HttpClient.newBuilder().build();
 
     // Convert this function to work asynchronously, supplying indexes via a user-supplied function.
-    public static Future<?> countWhalesAsync(String input, Consumer<Integer> indexer) {
+    public static Future<?> indexWhalesAsync(String input, Consumer<Integer> indexer) {
         // Copy the code from countWhales, wrapping
     }
 
