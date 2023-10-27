@@ -14,19 +14,20 @@ public class Exercise1Async {
     static final URI     bookUri = URI.create("https://www.gutenberg.org/cache/epub/33527/pg33527.txt");
     static final HttpClient http = HttpClient.newBuilder().build();
 
-    // Convert this function to work asynchronously, supplying indexes via a user-supplied function.
-    public static Future<?> indexWhalesAsync(String input, Consumer<Integer> indexer) {
-        // Copy the code from countWhales, wrapping
+    public static Future<List<Integer>> indexWhalesAsync(Future<String> input) {
+        // TODO: Convert the synchronous indexWhalesAsync to use Futures for its arguments so that nothing blocks.
+        // The method signature above is correct.
     }
 
     public static void main(String[] args) throws InterruptedException, ExecutionException, java.io.IOException {
         HttpRequest request = HttpRequest.newBuilder().uri(bookUri).GET().build();
 
-        // The one API in core Java that has an async version!
-        Future<HttpResponse<String>> resultFuture = http.sendAsync(request, BodyHandlers.ofString());
+        // HttpClient is one API in core Java that has an async version
+        Future<HttpResponse<String>> responseFuture = http.sendAsync(request, BodyHandlers.ofString());
+        Future<String> bodyFuture = // TODO: get the body from the responseFuture
+        Future<List<Integer>> whaleIndexFuture = indexWhalesAsync(bodyFuture);
 
-        Future<List<Integer>> whaleIndexFuture = // Submit a job that creates the index, calls countWhalesAsync, returns the result
-
-        System.out.println(whaleIndexFuture.get().size());
+        // And look - here we're free! All the work is scheduled, we could do something else before
+        // printing the result. But TODO: print the result.
     }
 }
