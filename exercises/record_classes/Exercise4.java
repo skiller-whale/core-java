@@ -3,7 +3,8 @@ import java.io.IOException;
 import java.util.List;
 
 import html.HtmlNode;
-import html.HtmlAttribute;
+import html.HtmlKeyAttribute;
+import html.HtmlKeyValueAttribute;
 import html.HtmlUtils;
 import java.util.Arrays;
 import java.util.ArrayList;
@@ -44,7 +45,7 @@ public class Exercise4 {
         )));
 
         // [Part 2] uncomment this after making `HtmlNode.children` immutable.
-        htmlTree.children().add(new HtmlNode("whale", "hello there", List.of()));
+        // htmlTree.children().add(new HtmlNode("whale", "hello there", List.of()));
         
         String renderedHtml = htmlTree.render();
         System.out.println(renderedHtml);

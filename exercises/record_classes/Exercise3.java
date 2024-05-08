@@ -3,7 +3,8 @@ import java.io.IOException;
 import java.util.List;
 
 import html.HtmlNode;
-import html.HtmlAttribute;
+import html.HtmlKeyAttribute;
+import html.HtmlKeyValueAttribute;
 import html.HtmlUtils;
 
 /*
