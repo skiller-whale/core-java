@@ -36,13 +36,11 @@ record KVResponse(int code, KVPair content) implements IResponse { }
 
 class ResponseUtils {
     public static String processResponse(IResponse response) {
-        return switch(response) {
-            // TODO: Your code goes here
-        };
+        // TODO: Your code goes here 
     }
 }
 
-public class Exercise3 {
+public class Exercise2 {
     public static void main(String[] args) {
         IResponse[] stringResponses = {
             new StringResponse(200, "login successful"),

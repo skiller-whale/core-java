@@ -16,6 +16,7 @@ The Response contains a String `content` and an int `code`.
 
 2) Run this file and make sure you don't see any assertion errors.
 
+HINT: You should write a `switch` statement on the response `code`.
 */
 
 record Response(int code, String content) { }
