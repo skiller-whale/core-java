@@ -16,6 +16,7 @@ It has one method called `sendMessage` that records the message and then prints 
     * Add two classes - `EmojiMessage` and `TextMessage` - that both inherit from `Message`.
     * `EmojiMessage` should only contain emojis and `TextMessage` - only text.
     * Make `Message` a sealed class that is only extended by `EmojiMessage` and `TextMessage`.
+    * Update the code so it uses the new classes appropriately.
 
 3) Run this script, and ensure that the chat still works as before.
 
