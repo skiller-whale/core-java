@@ -8,10 +8,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-import java.util.logging.Logger;
-import java.util.logging.FileHandler;
 import java.io.IOException;
+
+import java.util.logging.FileHandler;
 import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 public class Event {
 
@@ -54,20 +56,20 @@ public class Event {
 
     public void move(Duration delta) {
         start = start.plus(delta);
-        System.out.println(String.format("[log] Event %s moved by %s.", this, delta));
+        System.out.println(String.format("Event %s moved by %s.", this, delta));
     }
 
     // Add a new attendee to the event, throwing an exception if invalid.
     public void addAttendee(String attendee) throws InvalidAttendeeException {
         if (attendee.contains("/")) {
-            System.out.println(String.format("[log] Cannot add %s to %s.", attendee, this));
+            System.out.println(String.format("Cannot add %s to %s.", attendee, this));
 
             throw new InvalidAttendeeException(
                 "Name cannot contain the '/' character"
             );
         }
 
-        System.out.println(String.format("[log] Adding attendee %s to %s.", attendee, this));
+        System.out.println(String.format("Adding attendee %s to %s.", attendee, this));
 
         attendees.add(attendee);
     }
@@ -76,7 +78,7 @@ public class Event {
     public void removeAttendee(String attendee)
         throws AttendeeNotFoundException {
         if (attendees.isEmpty() || !attendees.remove(attendee)) {
-            System.out.println(String.format("[log] Cannot remove %s from %s.", attendee, this));
+            System.out.println(String.format("Cannot remove %s from %s.", attendee, this));
 
             throw new AttendeeNotFoundException(
                 "Could not remove " + attendee + " from attendees"

@@ -12,10 +12,12 @@ import java.util.TreeMap;
 import java.util.stream.Collectors;
 import java.util.UUID;
 
-import java.util.logging.Logger;
-import java.util.logging.FileHandler;
 import java.io.IOException;
+
+import java.util.logging.FileHandler;
 import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 public class Calendar {
 
@@ -37,7 +39,7 @@ public class Calendar {
     public void addEvent(Event event) {
         events.add(event);
 
-        System.out.println(String.format("[log] Adding %s to %s", event, this));
+        System.out.println(String.format("Adding %s to %s", event, this));
     }
 
     public void inviteToAllEvents(String attendee) {
@@ -45,7 +47,7 @@ public class Calendar {
             try {
                 event.addAttendee(attendee);
             } catch (InvalidAttendeeException e) {
-                System.out.println(String.format("[log] Could not invite %s to %s in %s", attendee, event, this));
+                System.out.println(String.format("Could not invite %s to %s in %s", attendee, event, this));
             }
         }
     }
@@ -55,7 +57,7 @@ public class Calendar {
             try {
                 event.removeAttendee(attendee);
             } catch (AttendeeNotFoundException e) {
-                System.out.println(String.format("[log] Not removing %s from %s in %s, not in event.", attendee, event, this));
+                System.out.println(String.format("Not removing %s from %s in %s, not in event.", attendee, event, this));
             }
         }
     }
@@ -64,7 +66,7 @@ public class Calendar {
         for (Event event : events) {
             event.move(delta);
 
-            System.out.println(String.format("[log] Moving %s in %s by %s", event, this, delta));
+            System.out.println(String.format("Moving %s in %s by %s", event, this, delta));
         }
     }
 
