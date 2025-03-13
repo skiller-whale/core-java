@@ -3,6 +3,7 @@ package fortunes;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.lang.IllegalArgumentException;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.List;
@@ -32,22 +33,18 @@ public class Fortunes {
             line = in.readLine();
 
             numFortunes ++;
-            if (numFortunes >= 7)
-                break;
+            if (numFortunes >= 7) break;
         }
 
         in.close();
 
-        if (numFortunes < 7)
-            throw new ParseException("Not enough fortunes!", -1);
-
-        if (line != null)
-            throw new ParseException("Too many fortunes!", -1);
+        if (numFortunes < 7) throw new ParseException("Not enough fortunes!", -1);
+        if (line != null) throw new ParseException("Too many fortunes!", -1);
     }
 
-    public String getFortune(LocalDate date) throws Exception {
+    public String getFortune(LocalDate date) {
         if (date.getYear() < 1000) {
-            throw new Exception("Millenium Bug! Fortunes only available after 1000AD");
+            throw new IllegalArgumentException("Millenium Bug! Fortunes only available after 1000AD");
         }
         int dayOfWeekIndex = date.getDayOfWeek().getValue() - 1;
 
