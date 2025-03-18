@@ -9,7 +9,7 @@ import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 import java.io.IOException;
 
-public class Exercise1 {
+public class Main {
 
     public static void main(String[] args) throws IOException{
         Calendar calendar = new Calendar();
