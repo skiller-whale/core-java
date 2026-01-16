@@ -36,10 +36,5 @@ public class JavaSnackBar {
         // 2. Filter the stream by testing each element for the vegan flag
         // 3. Print each item found
         //
-
-        // (in the next exercise)
-        //
-        // 4. Use reduce() and write a lambda argument which finds the cheapest calories
-        // 5. Print its result
     }
 }

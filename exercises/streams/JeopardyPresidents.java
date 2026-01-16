@@ -1,6 +1,4 @@
-import java.util.Arrays;
 import java.util.stream.*;
-import java.util.function.*;
 import java.nio.file.*;
 import java.io.IOException;
 
@@ -11,7 +9,7 @@ public class JeopardyPresidents {
 
         // Two utility methods you'll need:
         //
-        // 1. split a String into an array of smaller Strings e.g.
+        // 1. split a String into an array of smaller Strings:
         //
         //    "field 1\tfield 2".split("\t") ==> String[2] { "field 1", "field 2" }
         //
