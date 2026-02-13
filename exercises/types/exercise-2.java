@@ -1,19 +1,17 @@
 // ========================================== //
-// STRING CONCATENATION                       //
+// STRINGS                                    //
 // ========================================== //
-/*
- * Use concatenation to build the word "String" from the individual characters in the word.
- */
+import java.util.Scanner;
 
-class Concatenation {
+class StringSwap {
     public static void main(String[] args) {
-        var object = // code here
-        System.out.println(object);
+        String first = "2nd";
+        String second = "1st";
+
+        // TODO: Without changing the code above, add new code that swaps the values of
+        // the variables first and second, so first is "1st" and second is "2nd"
+
+        System.out.println("first: " + first);
+        System.out.println("second: " + second);
     }
 }
-
-/*
- * Run this application, and put the output in the answer box.
- *
- * If your code didn't produce `"String"`, can you explain why?
- */
