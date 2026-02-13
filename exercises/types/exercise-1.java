@@ -2,24 +2,20 @@
 // TYPES AND VARIABLES                        //
 // ========================================== //
 /*
- * Add explicit type declarations for each of the variables that are initialised below.
+ * It is possible to define variables with a type but without a value.
+ * What do you think the following code will print?
  *
- * Look at the print commands.
- * Try to predict which ones will produce compilation errors and comment them out.
- *
- * Run the program to test this.
+ * Compile and run the program to test your answer.
+ *   Make sure there aren't any compilation errors.
  */
 
 class Types {
     public static void main(String[] args) {
-        var num = "48";
-        var isCorrect = false;
-        var year = 2148;
-        var myChar = "c";
+        String name = "Sealion Dion";
+        int age = 25;
+        boolean isEmployed;
+        int salary;
 
-        // Do not change this code
-        System.out.println(num == year);
-        System.out.println(num == myChar);
-        System.out.println(isCorrect == year);
+        System.out.println(String.format("Name: %s, Age: %d, Employed: %b", name, age, isEmployed));
     }
 }
