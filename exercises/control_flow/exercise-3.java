@@ -1,34 +1,20 @@
-// ========================================== //
-// Do programmers dream of electric sheep?    //
-// ========================================== //
-/*
- * Alan tries to fall asleep by counting 'electric sheep'.
- * For any nth sheep, if n is even then Alan counts n in decimal.
- * Otherwise, it is an electric sheep and he counts n in binary.
- * For example, Alan would count eight sheep as follows:
- *
- *     0 sheep, 1 sheep, 2 sheep, 11 sheep, 4 sheep, 101 sheep, 6 sheep, 111 sheep, 8 sheep
- *
- * Using a while loop and if statements, write a program that will print Alan's counting while he is awake.
- * The loop should stop when Alan falls asleep.
- * Usually he falls asleep when he reaches a count of ten.
- *
- * The following code will convert an integer into a binary string.
- *
- *        Integer.toBinaryString(40);
- *
- * A number is even if its remainder after division by 2 is zero, e.g., 4 % 2 = 0.
- *
- */
-class BinaryCounting {
-    public static void main(String[] args) throws InterruptedException {
-        // Code here
-        while (...) {
+// ========================== //
+// Prime Number Checker       //
+// ========================== //
 
-            // Code here
-
-            System.out.printf(" sheep\n...\n"); // Don't edit this
-            Thread.sleep(1000); // Loop every second
-        }
+// Write code that finds whether a number is prime or not.
+//
+// To find whether a number `n` is prime, you can check whether it is
+// divisible by any number between `2` and `n-1`.
+//
+// The program should print:
+//  "<n> is prime" if the number is prime, and
+//  "<n> is not prime" if the number is not prime.
+//
+class PrimeChecker {
+    public static void main(String[] args) {
+        // code goes here
+        boolean isPrime = true;
+        int n = 13; // You can change this number to test with different inputs
     }
 }
