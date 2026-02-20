@@ -1,15 +1,25 @@
 // ========================== //
-// BuzzFish                   //
+// Division Calculator        //
 // ========================== //
 
-// The code should iterate through a range of integers, and:
-// 1. Print "BuzzFish" if an integer is divisible exactly by 3 and 5.
-// 2. Print "Buzz" if an integer is divisible exactly by 3.
-// 3. Print "Fish" if an integer is divisible exactly by 5.
-// 4. Print an integer if it is divisible neither by 3 nor by 5.
+// Write code that divides numbers.
+//
+// The program should:
+//  - if the user inputs `1`, terminate
+//  - if the user inputs `0`, this should be skipped
+//
 
-class BuzzFish {
+import java.util.Scanner;
+
+class DivisionCalculator {
     public static void main(String[] args) {
-        // code goes here
+        var scanner = new Scanner(System.in);
+
+        // TODO: modify the code below to implement a division calculator
+        while (true) {
+            System.out.print("Enter a number: ");
+            float number = scanner.nextFloat();
+            System.out.println(number);
+        }
     }
 }
