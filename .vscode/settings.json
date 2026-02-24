@@ -1,0 +1,9 @@
+{
+    "redhat.telemetry.enabled": false,
+    "java.import.projectSelection": "automatic",
+    "java.import.gradle.version": "8.13",
+    "java.import.exclusions": [
+        "**"
+    ],
+    "java.compile.nullAnalysis.mode": "automatic"
+}
