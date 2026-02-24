@@ -1,7 +1,6 @@
 // ========================================== //
 // STRINGS                                    //
 // ========================================== //
-import java.util.Scanner;
 
 class StringSwap {
     public static void main(String[] args) {
