@@ -19,7 +19,7 @@ public class StyleDemo {
 
 // Use this command:
 //
-//   cd intro
+//   cd exercises/intro
 //   ./run_style_demo.sh
 
 // You now have a choice of exercises. They are ordered loosely from easier to

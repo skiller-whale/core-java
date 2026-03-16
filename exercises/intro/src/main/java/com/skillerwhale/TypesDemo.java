@@ -21,7 +21,7 @@ public class TypesDemo {
 
 // Use this command:
 //
-//   cd intro
+//   cd exercises/intro
 //   ./run_types_demo.sh
 
 // You now have a choice of exercises from easier to harder:

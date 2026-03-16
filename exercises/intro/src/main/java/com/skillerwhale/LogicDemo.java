@@ -14,7 +14,7 @@ public class LogicDemo {
 
 // Use this command:
 //
-//   cd intro
+//   cd exercises/intro
 //   ./run_logic_demo.sh
 
 // You now have a choice of exercises from easier to harder:

@@ -1,4 +1,4 @@
-package com.skillerwhale;
+package com.project.main;
 
 public class PrintHello {
   public static void main() {
