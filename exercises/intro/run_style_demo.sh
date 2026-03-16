@@ -1,3 +1,3 @@
 #!/bin/bash
 
-java src/main/java/com/skillerwhale/ExploreStyle.java
+java src/main/java/com/skillerwhale/StyleDemo.java

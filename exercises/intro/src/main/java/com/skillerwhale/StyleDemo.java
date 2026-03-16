@@ -25,7 +25,8 @@ public class StyleDemo {
 // You now have a choice of exercises. They are ordered loosely from easier to
 // harder. You can pick whichever you want in whatever order you like.
 
-// You may need to research some of these. You are welcome to use AI to help.
+// You may need to research some of these. You are welcome to use AI to help in
+// your research, but not to write the program for you.
 
 // 1. Replace `System.out.println` with `IO.println`.
 
