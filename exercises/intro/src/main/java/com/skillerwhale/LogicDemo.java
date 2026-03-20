@@ -1,13 +1,13 @@
 package com.skillerwhale;
 
 public class LogicDemo {
-  public static void main(String[] args) {
-    String pickedNumString = IO.readln("Guess my number: ");
+    public static void main(String[] args) {
+        String pickedNumString = IO.readln("Guess my number: ");
 
-    int pickedNum = Integer.parseInt(pickedNumString);
+        int pickedNum = Integer.parseInt(pickedNumString);
 
-    IO.println("You guessed: " + pickedNum);
-  }
+        IO.println("You guessed: " + pickedNum);
+    }
 }
 
 // First, run this code to see it work.
@@ -34,7 +34,7 @@ public class LogicDemo {
 //          You will need a `while` loop for this. It looks like this:
 //
 //          while (condition) {
-//            // code to run while condition is true
+//              // code to run while condition is true
 //          }
 
 // Level 4: Implement level 3, but give the user a maximum of 5 guesses.
@@ -42,10 +42,10 @@ public class LogicDemo {
 // Level 5: Implement level 4, but also handle the situation where the user
 //          enters a non-numeric value.
 //
-//          You will need to use a `try`/`catch` block for this. It looks like this:
+// You will need to use a `try`/`catch` block for this. It looks like this:
 //
 //          try {
-//            // code that might throw an exception
+//              // code that might throw an exception
 //          } catch (ExceptionType e) {
-//            // code to run if an exception of type ExceptionType is thrown
+//              // code to run if an exception of type ExceptionType is thrown
 //          }

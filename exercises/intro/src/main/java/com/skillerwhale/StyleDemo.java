@@ -3,16 +3,16 @@ package com.skillerwhale;
 import java.util.List;
 
 public class StyleDemo {
-  public static void main() {
-    List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
-    int total = 0;
+    public static void main() {
+        List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        int total = 0;
 
-    for (int i = 0; i < numbers.size(); i++) {
-      total += numbers.get(i);
+        for (int i = 0; i < numbers.size(); i++) {
+            total += numbers.get(i);
+        }
+
+        System.out.println("The total is: " + total);
     }
-
-    System.out.println("The total is: " + total);
-  }
 }
 
 // First, run this code and observe the error.
@@ -52,4 +52,3 @@ public class StyleDemo {
 //     from 1 to 10 and printing the same message.
 //
 //     Our record is 70 characters. Can you beat it?
-
