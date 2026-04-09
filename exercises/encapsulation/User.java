@@ -1,6 +1,7 @@
 public class User {
     public int userId;
-    public String name;
+    public String firstName;
+    public String lastName;
     public String email;
 
     public void validateName(String name) {
@@ -9,12 +10,14 @@ public class User {
         }
     }
 
-    User(int userId, String name, String email) {
+    public User(int userId, String firstName, String lastName, String email) {
+        validateName(firstName);
+        validateName(lastName);
+        this.firstName = firstName;
+        this.lastName = lastName;
+
         this.userId = userId;
         this.email = email;
-
-        validateName(name);
-        this.name = name;
 
         logUserCreation();
     }
@@ -26,7 +29,7 @@ public class User {
 
     public void logUserInfo() {
         System.out.println("User ID: " + userId);
-        System.out.println("Name: " + name);
+        System.out.println("Name: " + firstName + " " + lastName);
         System.out.println("Email: " + email);
     }
 }
