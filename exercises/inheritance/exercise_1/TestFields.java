@@ -1,7 +1,7 @@
 import java.lang.reflect.*;
 import java.util.*;
 
-class Test {
+class TestFields {
     // Check that Account is a superclass of Savings and Current
     static boolean savings = Account.class.isAssignableFrom(Savings.class);
     static boolean current = Account.class.isAssignableFrom(Current.class);

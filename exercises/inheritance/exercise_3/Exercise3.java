@@ -1,4 +1,22 @@
-public class Test {
+// ========================================== //
+// INHERITANCE: EXERCISE 3                    //
+// ========================================== //
+/*
+ * The Savings and Current classes have been updated to contain a few methods.
+ *
+ * Currently, the Account superclass does not implement any methods for its
+ * subclasses, so there is some code duplication across each subclass.
+ *
+ *  1. Define a `transfer` method in Account that has the common functionality
+ *     between the existing 'transfer' methods. Update the subclasses accordingly.
+ *
+ *     HINT: In Savings you can call `super`.
+ *
+ *  2. Refactor the code so that the 'deposit' and 'withdrawal' methods are
+ *     not duplicated between Savings and Current.
+ */
+
+public class Exercise3 {
     public static void main(String[] args) {
         // Account class and two subclasses
         Account sealionDion = new Account(0, 0, 0);

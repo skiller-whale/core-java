@@ -1,4 +1,4 @@
-public class Test {
+public class Exercise4 {
     public static void main(String[] args) {
         Account[] sealionDion = new Account[2];
         Account[] dolphinLundgren = new Account[2];

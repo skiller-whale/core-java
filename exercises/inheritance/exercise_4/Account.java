@@ -9,6 +9,12 @@ class Account {
         this.balancePence = balancePence;
     }
 
+    public void display() {
+        System.out.printf("%s\nBalance:\t£%s\n", this.getClass(), (balancePence / 100d));
+        System.out.printf("Account Number:\t%s\n", accountNumber);
+        System.out.printf("Sort Code:\t%s\n", sortCode);
+    }
+
     public void deposit(int amountPence) {
         balancePence += amountPence;
     }
