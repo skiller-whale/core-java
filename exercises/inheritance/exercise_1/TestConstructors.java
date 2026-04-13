@@ -1,4 +1,7 @@
-class Test {
+import java.lang.reflect.*;
+import java.util.*;
+
+class TestConstructors {
     public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException {
 
         // Check that Account has a ternary constructor

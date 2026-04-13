@@ -1,12 +1,11 @@
-class Account {
-    int accountNumber;
-    int sortCode;
-    int balancePence;
+class Current extends Account {
+    long debitCardNumber;
+    int pin;
 
-    Account(int accountNumber, int sortCode, int balancePence) {
-        this.accountNumber = accountNumber;
-        this.sortCode = sortCode;
-        this.balancePence = balancePence;
+    Current(int accountNumber, int sortCode, int balancePence, long debitCardNumber, int pin) {
+        super(accountNumber, sortCode, balancePence);
+        this.debitCardNumber = debitCardNumber;
+        this.pin = pin;
     }
 
     public void deposit(int amountPence) {
