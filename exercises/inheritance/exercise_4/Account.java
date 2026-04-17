@@ -10,9 +10,9 @@ class Account {
     }
 
     public void display() {
-        System.out.printf("%s\nBalance:\t£%s\n", this.getClass(), (balancePence / 100d));
-        System.out.printf("Account Number:\t%s\n", accountNumber);
-        System.out.printf("Sort Code:\t%s\n", sortCode);
+        System.out.printf("%s\nBalance:\t£%.2f\n", this.getClass().getSimpleName(), (balancePence / 100d));
+        System.out.printf("Account Number:\t%d\n", accountNumber);
+        System.out.printf("Sort Code:\t%d\n", sortCode);
     }
 
     public void deposit(int amountPence) {
@@ -24,11 +24,12 @@ class Account {
     }
 
     public boolean transfer(Account transferee, int amountPence) {
-        if (balancePence >= amountPence) {
-            withdraw(amountPence);
-            transferee.deposit(amountPence);
-            return true;
+        if (balancePence < amountPence) {
+            return false;
         }
-        return false;
+
+        withdraw(amountPence);
+        transferee.deposit(amountPence);
+        return true;
     }
 }

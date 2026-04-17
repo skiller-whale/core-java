@@ -16,12 +16,13 @@ class Savings extends Account {
 
     // Savings account can transfer only to accounts with the same sort code
     public boolean transfer(Account transferee, int amountPence) {
-        if (balancePence >= amountPence && sortCode == transferee.sortCode) {
-            withdraw(amountPence);
-            transferee.deposit(amountPence);
-            return true;
+        if (balancePence < amountPence || sortCode != transferee.sortCode) {
+            return false;
         }
-        return false;
+
+        withdraw(amountPence);
+        transferee.deposit(amountPence);
+        return true;
     }
 
     public double calculateInterest() {

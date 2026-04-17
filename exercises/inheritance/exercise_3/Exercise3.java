@@ -25,16 +25,16 @@ public class Exercise3 {
         // Print output for the exercise
         System.out.println("OrcaBank: Giving Your Money Porpoise");
         System.out.println("************************************");
-        System.out.printf("%s: SeaLion Dion\n", sealionDion.getClass());
+        System.out.printf("%s: SeaLion Dion\n", sealionDion.getClass().getSimpleName());
         System.out.println("------------------------------------");
-        System.out.printf("Current Account -- Balance: £%s\n", (sealionCurrent.balancePence / 100d));
-        System.out.printf("Account Number:\t%s\n", sealionCurrent.accountNumber);
-        System.out.printf("Sort Code:\t%s\n", sealionCurrent.sortCode);
-        System.out.printf("Debit Card:\t%s\n", sealionCurrent.debitCardNumber);
-        System.out.printf("PIN:\t\t%s\n\n", sealionCurrent.pin);
-        System.out.printf("Savings Account -- Balance: £%s\n", (sealionSavings.balancePence / 100d));
-        System.out.printf("Account Number:\t%s\n", sealionSavings.accountNumber);
-        System.out.printf("Sort Code:\t%s\n", sealionSavings.sortCode);
-        System.out.printf("Interest:\t£%s\n", (sealionSavings.calculateInterest() / 100d));
+        System.out.printf("Current Account -- Balance: £%.2f\n", (sealionCurrent.balancePence / 100d));
+        System.out.printf("Account Number:\t%d\n", sealionCurrent.accountNumber);
+        System.out.printf("Sort Code:\t%d\n", sealionCurrent.sortCode);
+        System.out.printf("Debit Card:\t%d\n", sealionCurrent.debitCardNumber);
+        System.out.printf("PIN:\t\t%d\n\n", sealionCurrent.pin);
+        System.out.printf("Savings Account -- Balance: £%.2f\n", (sealionSavings.balancePence / 100d));
+        System.out.printf("Account Number:\t%d\n", sealionSavings.accountNumber);
+        System.out.printf("Sort Code:\t%d\n", sealionSavings.sortCode);
+        System.out.printf("Interest:\t£%.2f\n", (sealionSavings.calculateInterest() / 100d));
     }
 }
