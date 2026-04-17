@@ -18,11 +18,12 @@ class Account {
     }
 
     public boolean transfer(Account transferee, int amountPence) {
-        if (balancePence >= amountPence) {
-            withdraw(amountPence);
-            transferee.deposit(amountPence);
-            return true;
+        if (balancePence < amountPence) {
+            return false;
         }
-        return false;
+
+        withdraw(amountPence);
+        transferee.deposit(amountPence);
+        return true;
     }
 }

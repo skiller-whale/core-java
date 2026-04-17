@@ -8,10 +8,11 @@ class Savings extends Account {
 
     @Override
     public boolean transfer(Account transferee, int amountPence) {
-        if (sortCode == transferee.sortCode) {
-            return super.transfer(transferee, amountPence);
+        if (sortCode != transferee.sortCode) {
+            return false;
         }
-        return false;
+
+        return super.transfer(transferee, amountPence);
     }
 
     public double calculateInterest() {
