@@ -1,4 +1,4 @@
-class ReadFileToolCall {
+class ReadFileToolCall implements ContextItem {
     private String filePath;
 
     public ReadFileToolCall(String filePath) {
@@ -21,6 +21,7 @@ class ReadFileToolCall {
         return String.format("tool_call: %s(%s=%s)", getName(), getParameterName(), getParameterValue());
     }
 
+    @Override
     public String render() {
         return String.format("<|im_start|>%s<|im_end|>", getContent());
     }

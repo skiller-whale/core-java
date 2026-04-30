@@ -1,4 +1,4 @@
-class UserMessage {
+class UserMessage implements ContextItem {
     private String content;
 
     public UserMessage(String content) {
@@ -13,6 +13,7 @@ class UserMessage {
         return String.format("%s: %s", getRole(), content);
     }
 
+    @Override
     public String render() {
         return String.format("<|im_start|>%s<|im_end|>", getContent());
     }
