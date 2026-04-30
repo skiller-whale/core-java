@@ -14,7 +14,7 @@
  * 1. Implement the `reverse` method for both the `Compass` and `Coin` classes.
  *     * You can uncomment the `assert` statements to check your implementation.
  * 2. Implement a 'Reversible' interface that's implemented in both Compass and Coin.
- * 3. [Extension] Implement `assertReversesTwice`.
+ * 3. Implement `assertReversesTwice`.
  *     * It should take an object of type `Reversible` and assert that reversing twice returns the original object.
  *     * Call `assertReversesTwice` for each of the Compass and Coin constants.
  */

@@ -1,0 +1,3 @@
+interface ContextItem {
+    String render();
+}
