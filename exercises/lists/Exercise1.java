@@ -1,17 +1,17 @@
+import java.util.ArrayList;
 import java.util.List;
 
 class Main {
     public static void main(String[] args) {
-        Menu menu = new Menu(List.of(
-            new Item("Ice Tea", 3.50f),
-            new Item("Carrot Juice", 2.00f),
-            new Item("Pancakes", 4.00f),
-            new Item("Penne Alfredo", 9.15f),
-            new Item("Waffles", 4.75f)
-        ));
-        menu.printMenu();
-        System.out.println("Total: " + menu.totalCost());
-        System.out.println("Has Ice Tea: " + menu.isAvailable(new Item("Ice Tea", 3.50f)));
-        System.out.println("Has Pizza: " + menu.isAvailable(new Item("Pizza", 9.95f)));
+        Item item1 = new Item("Ice Tea", 3.50f);
+        Item item2 = new Item("Carrot Juice", 2.00f);
+        Item item3 = new Item("Pancakes", 4.00f);
+
+        // TODO: create a list of items called `menu` and add the above items to it
+
+        // TODO: print out the second menu item from the list
+
+        // TODO: covert this array of prices into a list
+        float[] prices = {3.50f, 2.00f, 4.00f};
     }
 }
