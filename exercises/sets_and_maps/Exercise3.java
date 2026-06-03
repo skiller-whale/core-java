@@ -15,7 +15,7 @@ class Main {
     );
 
     public static void main(String[] args) {
-        var finder = new TopVisitorFinder(LOG);
+        var finder = new LogAnalyser(LOG);
 
         System.out.println("Visit counts:");
         finder.printVisitCounts();
