@@ -11,7 +11,7 @@ class Main {
 
         // TODO: print out the second menu item from the list
 
-        // TODO: covert this array of prices into a list
+        // TODO: convert this array of prices into a list
         float[] prices = {3.50f, 2.00f, 4.00f};
     }
 }
