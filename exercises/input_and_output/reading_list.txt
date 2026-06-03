@@ -1,0 +1,6 @@
+The Pragmatic Programmer,1999,Andrew Hunt
+Clean Code,2008,Robert C. Martin
+Effective Java,2001,Joshua Bloch
+Designing Data-Intensive Applications,2017,Martin Kleppmann
+The Phoenix Project,2013,Gene Kim
+A Philosophy of Software Design,2018,John Ousterhout
