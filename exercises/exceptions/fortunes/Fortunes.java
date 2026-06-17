@@ -1,9 +1,10 @@
 package fortunes;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.lang.IllegalArgumentException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.List;
@@ -22,7 +23,7 @@ public class Fortunes {
         DAY_NAMES = new ArrayList<String>();
         int numFortunes = 0;
         String line = null;
-        BufferedReader in = new BufferedReader(new FileReader(fileName));
+        BufferedReader in = Files.newBufferedReader(Path.of(fileName));
 
         line = in.readLine();
         while (line != null) {
