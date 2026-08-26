@@ -17,7 +17,7 @@ class Order {
         return 0;
     }
 
-    void applyDiscount(double percentage) {
+    void applyDiscount(float percentage) {
         // TODO: apply the given percentage discount to all items in the order
     }
 
@@ -33,5 +33,12 @@ class Order {
     // ----------------- //
     void applyBudget(float maxPrice) {
         // TODO: remove all items that are more expensive than maxPrice
+    }
+
+    // Helper method to print items in the order (to check your code)
+    void printItems() {
+        for (Item item : items) {
+            System.out.println(item);
+        }
     }
 }
