@@ -17,11 +17,9 @@ import java.util.Scanner;
 
 class ChatBot {
     public static void main(String[] args) {
-        // ===== DO NOT EDIT THE CODE BELOW =====
         Scanner scanner = new Scanner(System.in);
         System.out.print("type your message >>> ");
         String input = scanner.nextLine();
-        // ===== DO NOT EDIT THE CODE ABOVE =====
 
         // TODO: Add if/else statements to handle the special cases
         System.out.println(input);
